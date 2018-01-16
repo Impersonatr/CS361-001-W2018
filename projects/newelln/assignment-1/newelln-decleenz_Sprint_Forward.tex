@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[latin1]{inputenc}
+
+
+\title{Team SPRINT Forward}
+\author{Nick Newell (newelln), Zech DeCleene (decleenz)}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+\section{Preface:}
+ 
+        	 Over the spring and summer, I worked an IT internship with a homebuilding company. While there, I helped plan, start, and finish several large-scale projects – one of which was the total migration of critical infrastructure to cloud computing services. This particular project started about a month into my internship, and actually ended just over a month after I left to return to OSU. Due to the sheer scope of the project, as well as the critical nature of the infrastructure being moved (and other considerations besides!), meant that it was impossible to do it peacemeal. We would have to create an entirely new environment in the cloud, and once ready, do a clean cutover to the new system. The amount of work to even get to the cutover was monumental. To do so, we used Sprint planning.
+ 
+ 
+\section{The Background:}
+ 
+        	Sprint planning, or Agile planning, or even Iteration planning, is a method of development that many companies are hurrying to make the switch to. At its core, Sprint planning aims to break a project into Stories. These are goals throughout the project, and are generally broad in nature: "Test new WAF." These stories are further broken down into Tasks: "Check allowed IP ranges", "Research blacklisting capabilities", and more. Each task is then given an estimate for how long it will take. Each week, there is a stand-up meeting (ours was limited to 15 minutes) where members will go over where they are, and update what they can commit to working on this week. Ideally, everyone will complete the tasks they commit to - but if this isn't the case, the person will explain what the blockages are. Depending on whoever is leading the planning, this is all kept track of on a whiteboard or a piece of software.
+
+        	
+ 
+ 
+ 
+\section{The Problem/Solution:}
+ 
+          In my case, my boss insisted on using a whiteboard. We weren't about to implement another piece of software (Jira, Kanban boards), since we had so much on our plate already, and he liked the simplicity of the whiteboard. The problem is, the team was spread across 3 states at some points in time. The rest of the time, we were spread between two distinct buildings. This made it hard to consistently meet up in the room with our whiteboard to do the standup meeting.
+          
+          That is why I'd like to create a WYSIWYG Sprint board. At its core, the software would be a virtual whiteboard. You could create a project, add people to the project, add numbered stories to the project, and numbered tasks to those stories. During the standup meetings, each person gives an estimate of how much time they can give to the project each iteration (generally a week at a time), then take ownership of tasks they can do. Employees in the Sprint should be able to set that new value each week, and when taking ownership of tasks should be warned if they're going over their allotted time. Movement should feel like a whiteboard and sticky notes as well – stories and tasks collected to the left, then moved into the "In queue swim lane" of the person owning the task, then to "in progress", then finally to "complete". In this way, we maintain the simplicity and tactility of a whiteboard approach while maintaining the ease of access that a software approach gives.
+
+
+ 
+\section{Implementation:}
+
+          The core of the program should probably be a website and database. This solves the problem our group ran into of multiple locales. There also needs to be some separation between not only various projects, but also various companies. This means some form of authentication. There are a few approaches to this. Each project could have an "owner" (a user on the site) who creates and manages the project. He could maintain multiple projects in this way, possibly for other companies. The problem with this approach is other users would have to be invited in to the project. This is the more professional way to do things, but for the scope of our projects would be far more work. Another approach is to group all projects under one company, and have one log-in per company. This is far less restrictive – it means that it's less secure, but allows people to enter or exit the project far more easily than inviting/removing users. Alternatively, each project could be treated as a user – this maintains separation between other projects and companies and allows the flexibility of the previous approach. This is what I'd recommend for the projects being proposed in class. 
+          
+	        While the core of the app is a virtual whiteboard, there needs to be additional functionality in place - easily adding new "swim lanes" for new project members, creation of note objects, and the ability to set the iteration time (likely 3 days/1 week/2 weeks/1 month) to fit the needs of the project. Regarding the creation of note objects, it would be preferable to have it broken up into story notes and task notes, but not necessary. Additionally, the ability to change the color of the sticky note might be useful. Other useful features would include:
+	        
+	        \begin{itemize}
+            \item Allocation of time per user
+            \item Allocation of time per task
+            \item Warning if group member takes on more task time than allotted
+            \item Grouping of completed tasks at the end of the sprint (garbage collection)
+          \end{itemize}
+	
+\section{Challenges:}
+
+	        The biggest challenge facing this project is maintaining the "tactility" of a whiteboard. What this project aims to do is be both simple as well as familiar. This means the minutiae of creating the board - drawing the swim lanes, adding numbers to stories/tasks, or editing existing stories/tasks should rely on the ease of software. Meanwhile, the movement of tasks and stories should be kept as true to the physical version as possible. This last part is the sticking point. It would mean that each sticky note would have to be an element that a person could manipulate, which can be tricky and time-consuming to implement. Outside of using an existing framework, there is no easy way to mitigate this challenge.
+
+
+
+
+\end{document}
